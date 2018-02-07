@@ -17,12 +17,13 @@ import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
+
 /** sample code is :
  * https://community.atlassian.com/t5/Answers-Developer-Questions/Jira-Rest-Java-Client-Core-How-to-set-status-of-an-issue/qaq-p/502012
  */
 public class JiraRestClientHlpr {
 
-    private static final String JIRA_URL = "https://[the jira url";
+    private static final String JIRA_URL = "https://[the jira url]";
     private static final Logger LOGGER = LoggerFactory.getLogger(JiraRestClientHlpr.class);
 
     private Issue jiraIssue(JiraRestClient client, JiraInfo jiraInfo) {
@@ -32,7 +33,7 @@ public class JiraRestClientHlpr {
         Promise<Issue>  promisedParent = issueClient.getIssue(jiraInfo.getJiraId(),expand);
         Issue issue = promisedParent.claim();
         printAllTransitions(issueClient, issue);
-
+        return issue;
     }
 
     private JiraRestClient getJiraRestClient() {
@@ -56,7 +57,6 @@ public class JiraRestClientHlpr {
                     e.printStackTrace();
                 }
         }
-
     }
 
     public void printAllTransitions(IssueRestClient issueClient, Issue issue) {
@@ -76,7 +76,7 @@ public class JiraRestClientHlpr {
         jiraInfo.setJiraId(jiraId);
         jiraInfo.setJiraUrl(JIRA_URL);
         Issue issue = jiraIssue(jiraClient, jiraInfo);
-        printIssue();
+        printIssue(issue);
 
         // transition from OPEN to IN_PROGRESS
         if (issue.getStatus().getId() == JiraStatus.OPEN.value && runStatus) {
@@ -87,8 +87,10 @@ public class JiraRestClientHlpr {
     }
 
     public void printIssue(Issue issue) {
-        LOGGER.info("Description::" + issue.getDescription);
-        LOGGER.info("Description::" + issue.getAssignee().getDescription);
+        LOGGER.info("Description::" + issue.getDescription());
+        LOGGER.info("Status::" + issue.getStatus());
+        LOGGER.info("Key::" + issue.getKey());
+        LOGGER.info("Priority::" + issue.getPriority());
         issue.getComments().forEach(c->LOGGER.info("Comment::" + c.toString()));
     }
 }

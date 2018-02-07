@@ -42,21 +42,18 @@ public class SafariTest {
         //Click the selected button
         elements.get(0).click();
 
-
         assertTrue("The page title should be chagned as expected",
-                (new WebDriverWait(driver, 5))
-                        .until(new ExpectedCondition<Boolean>() {
-                            public Boolean apply(WebDriver d) {
-                                return d.getTitle().equals("我眼中软件工程人员该有的常识");
-                            }
-                        })
+            (new WebDriverWait(driver, 5))
+                .until(new ExpectedCondition<Boolean>() {
+                    public Boolean apply(WebDriver d) {
+                        return d.getTitle().equals("我眼中软件工程人员该有的常识");
+                    }
+                })
         );
-
     }
 
     @After
     public void teardown() throws IOException {
         driver.quit();
     }
-
 }

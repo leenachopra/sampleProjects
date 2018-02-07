@@ -10,16 +10,6 @@ Feature: Basic Arithmetic
     When I add 4 and 5
     Then the result is 9
 
-  Scenario: Another Addition
-  # Try to change one of the values below to provoke a failure
-    When I add 4 and 7
-    Then the result is 11
-
-  Scenario: Another Addition
-  # Try to see if adding a -ve number works
-    When I add -4 and 7
-    Then the result is 3
-
   Scenario Outline: Many additions
     Given the previous entries:
       | first | second | operation |
@@ -35,7 +25,6 @@ Feature: Basic Arithmetic
     | a | b | c  |
     | 1 | 2 | 8  |
     | 2 | 3 | 10 |
-
 
   Examples: Double digits
     | a  | b  | c  |

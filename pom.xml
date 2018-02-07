@@ -13,8 +13,42 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+
+        <jira.version>6.3.11</jira.version>
+        <jira.data.version>6.3</jira.data.version>
+        <jira.plugin.version>4.2.20</jira.plugin.version>
+        <testkit.version>6.0.51</testkit.version>
+
+        <scm.connection>scm:git:git://github.com/leenachopra/sampleProjects.git</scm.connection>
     </properties>
 
+
+    <repositories>
+        <repository>
+            <id>central</id>
+            <name>Atlassian Public Repository</name>
+            <layout>default</layout>
+            <url>http://maven.atlassian.com/public</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>atlassian-public</id>
+            <url>https://maven.atlassian.com/repository/public</url>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
+                <checksumPolicy>warn</checksumPolicy>
+            </snapshots>
+            <releases>
+                <enabled>true</enabled>
+                <checksumPolicy>warn</checksumPolicy>
+            </releases>
+        </repository>
+    </repositories>
 
     <!--Selenium Dependencies -->
     <dependencies>
@@ -39,17 +73,19 @@
 
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>htmlunit-driver</artifactId>
-            <version>2.23.2</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-firefox-driver</artifactId>
             <version>${selenium.version}</version>
         </dependency>
 
+        <!-- When getting MediaTypeException when running Selenium tests-->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>18.0</version>
+        </dependency>
+
         <!-- jira-integration -->
+
         <dependency>
             <groupId>com.atlassian.jira</groupId>
             <artifactId>jira-rest-java-client-core</artifactId>
@@ -60,6 +96,18 @@
             <groupId>com.atlassian.jira</groupId>
             <artifactId>jira-rest-java-client-api</artifactId>
             <version>4.0.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.atlassian.jira</groupId>
+            <artifactId>jira-api</artifactId>
+            <version>${jira.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.atlassian.jira</groupId>
+            <artifactId>jira-components</artifactId>
+            <version>${jira.version}</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/info.cukes/cucumber-junit -->
@@ -99,9 +147,15 @@
             <version>1.7.25</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.25</version>
+        </dependency>
 
 
         <!-- needed to call the Deque used in Calculator class -->
+        <!--
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java</artifactId>
@@ -113,6 +167,8 @@
             <artifactId>cucumber-testng</artifactId>
             <scope>test</scope>
         </dependency>
+        -->
+
     </dependencies>
 
     <build>
@@ -124,6 +180,8 @@
                 <configuration>
                     <source>${maven.compiler.source}</source>
                     <target>${maven.compiler.target}</target>
+                    <testSource>${maven.compiler.source}</testSource>
+                    <testTarget>${maven.compiler.target}</testTarget>
                 </configuration>
             </plugin>
             <plugin>
@@ -133,6 +191,17 @@
             </plugin>
 
         </plugins>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+
+            <resource>
+                <directory>src/test/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
     </build>
 
 </project>
