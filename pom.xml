@@ -14,6 +14,7 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
 
         <jira.version>6.3.11</jira.version>
@@ -21,20 +22,31 @@
         <jira.plugin.version>4.2.20</jira.plugin.version>
         <testkit.version>6.0.51</testkit.version>
 
+        <sonar.pluginKey>gherkin</sonar.pluginKey>
+        <sonar.pluginName>Cucumber Gherkin</sonar.pluginName>
+        <sonar.pluginClass>org.sonar.plugins.gherkin.GherkinPlugin</sonar.pluginClass>
+        <sonar.skipDependenciesPackaging>true</sonar.skipDependenciesPackaging>
+        <sonar.jacoco.reportPath>${project.basedir}/../target/coverage-reports/jacoco.exec</sonar.jacoco.reportPath>
+        <sonar.jacoco.itreportPath>${project.basedir}/../target/coverage-reports/jacoco.exec</sonar.jacoco.itreportPath>
+
+        <maven.surefirePlugin.version>2.20.1</maven.surefirePlugin.version>
+        <maven.failsafePlugin.version>2.19.1</maven.failsafePlugin.version>
         <scm.connection>scm:git:git://github.com/leenachopra/sampleProjects.git</scm.connection>
+		<developer.connection>scm:git:git://github.com/leenachopra/sampleProjects.git</developer.connection>
+		<env>qa</env>
     </properties>
 
 
     <repositories>
-        <repository>
-            <id>central</id>
-            <name>Atlassian Public Repository</name>
-            <layout>default</layout>
-            <url>http://maven.atlassian.com/public</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
+        <!--<repository>-->
+            <!--<id>central</id>-->
+            <!--<name>Atlassian Public Repository</name>-->
+            <!--<layout>default</layout>-->
+            <!--<url>http://maven.atlassian.com/public</url>-->
+            <!--<snapshots>-->
+                <!--<enabled>false</enabled>-->
+            <!--</snapshots>-->
+        <!--</repository>-->
         <repository>
             <id>atlassian-public</id>
             <url>https://maven.atlassian.com/repository/public</url>
@@ -50,7 +62,6 @@
         </repository>
     </repositories>
 
-    <!--Selenium Dependencies -->
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
@@ -59,6 +70,24 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/org.testng/testng -->
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>6.14.2</version>
+            <scope>compile</scope>
+        </dependency>
+
+
+        <!-- for assertThat -->
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest-all</artifactId>
+			<version>1.3</version>
+			<scope>test</scope>
+		</dependency>
+
+        <!--Selenium Dependencies -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
@@ -106,11 +135,11 @@
         </dependency>
         <dependency>
             <groupId>com.atlassian.jira</groupId>
-            <artifactId>jira-components</artifactId>
+            <artifactId>jira-core</artifactId>
             <version>${jira.version}</version>
+            <scope>provided</scope>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/info.cukes/cucumber-junit -->
         <dependency>
             <groupId>info.cukes</groupId>
             <artifactId>cucumber-junit</artifactId>
@@ -153,6 +182,12 @@
             <version>1.7.25</version>
         </dependency>
 
+        <!--Ctrl key + /, used to comment and uncomment -->
+        <dependency>
+            <groupId>jndi</groupId>
+            <artifactId>jndi</artifactId>
+            <version>1.2.1</version>
+        </dependency>
 
         <!-- needed to call the Deque used in Calculator class -->
         <!--
@@ -169,6 +204,11 @@
         </dependency>
         -->
 
+        <!--<dependency>-->
+            <!--<groupId>org.apache.maven.surefire</groupId>-->
+            <!--<artifactId>surefire-testng</artifactId>-->
+            <!--<version>2.14.1</version>-->
+        <!--</dependency>-->
     </dependencies>
 
     <build>
@@ -187,7 +227,120 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.20.1</version>
+                <version>${maven.surefirePlugin.version}</version>
+                <!-- needed if want to run testNg tests -->
+                <inherited>true</inherited>
+                <executions>
+                    <execution>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                        <suiteXmlFiles>
+                            <suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
+                        </suiteXmlFiles>
+                </configuration>
+                <!-- we need a way to also run junit tests as part of surefire plugin-->
+            </plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<version>3.0.0</version>
+				<executions>
+					 <execution>
+					   <id>checkstyle-check</id>
+					   <phase>test</phase>
+					   <goals>
+						 <goal>check</goal>
+					   </goals>
+					   <configuration>
+						 <configLocation>checkstyle.xml</configLocation>
+						 <encoding>UTF-8</encoding>
+						 <consoleOutput>true</consoleOutput>
+						 <failsOnError>true</failsOnError>
+						 <failOnViolation>true</failOnViolation>
+						 <includes>**\/*.java, **\/*.groovy</includes>
+						 <includeTestSourceDirectory>true</includeTestSourceDirectory>
+					   </configuration>
+					   
+					 </execution>
+				   </executions>
+			</plugin>
+            <!-- this is needed to get the cucumber integration tests to appear in the jacoco report-->
+
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.0</version>
+                <executions>
+                    <execution>
+                        <id>pre-unit-test</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                        <configuration>
+                            <destFile>{$project.build.directory}/coverage-reports/jacoco.exe</destFile>
+                            <propertyName>surefireJacocoAgent</propertyName>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>pre-integration-test</id>
+                        <goals>
+                            <goal>prepare-agent-integration</goal>
+                        </goals>
+                        <configuration>
+                            <destFile>{$project.build.directory}/coverage-reports/jacoco-it.exec</destFile>
+                            <propertyName>failsafeJacocoAgent</propertyName>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>post-unit-test</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                        <configuration>
+                            <dataFile>{$project.build.directory}/coverage-reports/jacoco.exec</dataFile>
+                            <outputDirectory>{$project.reporting.directory}/jacoco</outputDirectory>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>post-integration-test</id>
+                        <goals>
+                            <goal>report-integration</goal>
+                        </goals>
+                        <configuration>
+                            <dataFile>{$project.build.directory}/coverage-reports/jacoco-it.exec</dataFile>
+                            <outputDirectory>{$project.reporting.directory}/jacoco</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>${maven.failsafePlugin.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>integration-test</goal>
+                            <goal>verify</goal>
+                        </goals>
+                        <!--<configuration>-->
+                            <!--<argLine>${failsafeJacocoAgent}</argLine>-->
+                        <!--</configuration>-->
+                    </execution>
+                </executions>
+                <configuration>
+                    <includes>
+                        <!-- add your particular runner class -->
+                        <include>**/*CucumberRunner*.java</include>
+                    </includes>
+                    <testFailureIgnore>true</testFailureIgnore>
+                </configuration>
             </plugin>
 
         </plugins>

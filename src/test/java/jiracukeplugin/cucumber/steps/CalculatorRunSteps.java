@@ -48,7 +48,8 @@ public class CalculatorRunSteps {
     @Then("^the result is (\\d+)$")
     public void validateResult(double result) {
         currentRunStatus = (total == result);
-        Assert.assertEquals(total, result);
+        // delta is set to 0 indicating 0 preceision loss
+        Assert.assertEquals(total, result, 0);
     }
 
     @When("^I add (\\d+) and (\\d+)$")

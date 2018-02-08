@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Page Object test example">
+    <parameter name="appURL" value="https://www.google.co.in/"/>
+    <parameter name="browserType" value="chrome"/>
+    <test name="sample test">
+        <!--Ctrl key + /, used to comment and uncomment -->
+        <classes>
+            <class name="com.sample.selenium.testNg.BasePageTest"/>
+            <!--<class name="com.sample.selenium.testNg.SignInPageTest"/>-->
+            <!--<class name="com.sample.selenium.testNg.CreateAnAccountTest"/>-->
+        </classes>
+    </test>
+</suite>

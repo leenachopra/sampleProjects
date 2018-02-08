@@ -1,22 +1,20 @@
-package com.sample.selenium;
+package com.sample.selenium.unit;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.interactions.Mouse;
 import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.assertTrue;
 
+@Ignore
 public class SafariTest {
 
     private String testUrl;
@@ -25,7 +23,7 @@ public class SafariTest {
     @Before
     public void prepare() {
 
-        testUrl = "https://leftstick.github.io/";
+        testUrl = "http://www.google.com";
 
         driver = new SafariDriver();
         driver.manage().window().maximize();
@@ -46,7 +44,7 @@ public class SafariTest {
             (new WebDriverWait(driver, 5))
                 .until(new ExpectedCondition<Boolean>() {
                     public Boolean apply(WebDriver d) {
-                        return d.getTitle().equals("我眼中软件工程人员该有的常识");
+                        return d.getTitle().equals("Google");
                     }
                 })
         );
