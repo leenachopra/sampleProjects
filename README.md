@@ -10,7 +10,7 @@ as well as code around Page Object design pattern for SeleniumWebdriver TestNg t
 * IDE used to develop is IntelliJ Community addtion.
 
 
-## Execute automation tests (cucumber, testNg and JUnit test types ##
+## Execute automation tests (cucumber, testNg and JUnit test types) ##
 ```bash
 mvn clean test
 ```
