@@ -33,6 +33,8 @@
         <maven.failsafePlugin.version>2.19.1</maven.failsafePlugin.version>
         <scm.connection>scm:git:git://github.com/leenachopra/sampleProjects.git</scm.connection>
 		<developer.connection>scm:git:git://github.com/leenachopra/sampleProjects.git</developer.connection>
+
+        <checkstyle.config.location>${project.basedir}/checkstyle.xml</checkstyle.config.location>
 		<env>qa</env>
     </properties>
 
@@ -238,11 +240,32 @@
                         </goals>
                     </execution>
                 </executions>
+
+                <dependencies>
+                    <dependency>
+                        <groupId>org.apache.maven.surefire</groupId>
+                        <artifactId>surefire-junit47</artifactId>
+                        <version>${maven.surefirePlugin.version}</version>
+                    </dependency>
+                </dependencies>
                 <configuration>
-                        <suiteXmlFiles>
-                            <suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
-                        </suiteXmlFiles>
+                    <parallel>methods</parallel>
+                    <threadCount>10</threadCount>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
+                    </suiteXmlFiles>
+                    <properties>
+                        <property>
+                            <name>suitethreadpoolsize</name>
+                            <value>2</value>
+                        </property>
+                    </properties>
+
                 </configuration>
+
+
+
+
                 <!-- we need a way to also run junit tests as part of surefire plugin-->
             </plugin>
 			<plugin>
@@ -257,7 +280,7 @@
 						 <goal>check</goal>
 					   </goals>
 					   <configuration>
-						 <configLocation>checkstyle.xml</configLocation>
+						 <configLocation>${checkstyle.config.location}</configLocation>
 						 <encoding>UTF-8</encoding>
 						 <consoleOutput>true</consoleOutput>
 						 <failsOnError>true</failsOnError>
