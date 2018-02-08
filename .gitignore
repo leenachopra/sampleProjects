@@ -3,6 +3,7 @@
 #maven
 target
 
+
 #mac
 .DS_Store
 
@@ -13,4 +14,7 @@ target
 
 #idea
 .idea/
-selenium-chrome-example.iml
+
+#logs
+*.log
+sampleProjects.iml
