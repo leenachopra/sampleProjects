@@ -3,6 +3,8 @@ package com.sample.selenium.testNg;
 
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import selenium.testng.BrowserSetup;
@@ -11,6 +13,8 @@ import selenium.testng.pageobjects.SignInPage;
 import selenium.testng.pageobjects.CreateAccountPage;
 
 public class CreateAnAccountTest extends BrowserSetup{
+    private static final Logger LOGGER = LoggerFactory.getLogger(CreateAnAccountTest.class);
+
     private WebDriver driver;
     private SignInPage signInPage;
     private BasePage basePage;
@@ -24,7 +28,7 @@ public class CreateAnAccountTest extends BrowserSetup{
 
     @Test
     public void verifyCreateAnAccountPage() {
-        System.out.println("Create An Account page test...");
+        LOGGER.info("Create An Account page test...");
         basePage = new BasePage(driver);
         signInPage = basePage.clickSignInBtn();
         createAccountPage = signInPage.clickonCreateAnAccount();

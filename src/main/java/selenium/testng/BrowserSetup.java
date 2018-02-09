@@ -2,8 +2,11 @@ package selenium.testng;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.AfterClass;
@@ -34,8 +37,8 @@ public class BrowserSetup
                 break;
             default:
                 LOGGER.info("browser : " + browserType
-                        + " is invalid, Launching Firefox as browser of choice..");
-                driver = initFirefoxDriver(appURL);
+                        + " is invalid, Launching Chrome as browser of choice..");
+                driver = initChromeDriver(appURL);
         }
     }
 
@@ -51,7 +54,13 @@ public class BrowserSetup
 
     private static WebDriver initFirefoxDriver(String appURL) {
         LOGGER.info("Launching Firefox browser..");
-        WebDriver driver = new FirefoxDriver();
+
+        DesiredCapabilities capabilities = DesiredCapabilities.firefox();
+        capabilities.setCapability("marionette", true);
+        //FirefoxProfile profile = new FirefoxProfile();
+        //profile.setPreference("browser.startup.homepage", testUrl);
+        WebDriver driver = new FirefoxDriver(capabilities);
+        //maximize window
         driver.manage().window().maximize();
         driver.navigate().to(appURL);
         return driver;
@@ -60,7 +69,18 @@ public class BrowserSetup
     private static WebDriver initIEDriver(String appURL) {
         LOGGER.info("Launching google chrome with new profile..");
         System.setProperty("webdriver.chrome.driver", "webdriver/IEDriverServer.exe");
-        WebDriver driver = new InternetExplorerDriver();
+
+        DesiredCapabilities capability = DesiredCapabilities.internetExplorer();
+        capability.setCapability(InternetExplorerDriver.IGNORE_ZOOM_SETTING, true);
+        capability.setCapability(InternetExplorerDriver.ELEMENT_SCROLL_BEHAVIOR, 1);
+        capability.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
+        capability.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS,true);
+
+        //System.setProperty("webdriver.ie.driver", "webdriver/IEDriverServer.exe");
+        //WebDriver driver = new InternetExplorerDriver();
+
+        System.setProperty("webdriver.edge.driver", "webdriver/MicrosoftWebDriver.exe");
+        WebDriver driver = new EdgeDriver(capability);
         driver.manage().window().maximize();
         driver.navigate().to(appURL);
         //driver.get(appUrl);

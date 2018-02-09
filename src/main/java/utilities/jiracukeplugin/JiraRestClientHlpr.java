@@ -64,9 +64,9 @@ public class JiraRestClientHlpr {
         Iterable<Transition> transitions = ptransitions.claim();
 
         for(Transition t: transitions){
-            System.out.println(t.getName() + ":" + t.getId());
+            LOGGER.info(t.getName() + ":" + t.getId());
         }
-        //System.out.println(issue.getStatus().getName());
+        //LOGGER.info(issue.getStatus().getName());
     }
 
     public void updateJiraStatus(String jiraId, boolean runStatus ) {

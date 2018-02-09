@@ -6,6 +6,8 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxProfile;
+import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -28,17 +30,14 @@ public class FirefoxTest {
         System.setProperty("webdriver.gecko.driver","webdriver/geckodriver.exe");
         //System.setProperty("webdriver.firefox.marionette","webdriver/geckodriver.exe");
 
-        // Create a new instance of the Chrome driver
-        // Notice that the remainder of the code relies on the interface,
-        // not the implementation.
-        //DesiredCapabilities caps = DesiredCapabilities.firefox();
-        //caps.setCapability("version", "latest");
-        //caps.setCapability("platform", Platform.WINDOWS);
-        //caps.setCapability("name", "Testing Selenium");
 
-        DesiredCapabilities capabilities=DesiredCapabilities.firefox();
+        DesiredCapabilities capabilities = DesiredCapabilities.firefox();
         capabilities.setCapability("marionette", true);
-        WebDriver driver = new FirefoxDriver(capabilities);
+        //FirefoxProfile profile = new FirefoxProfile();
+        //profile.setPreference("browser.startup.homepage", testUrl);
+        driver = new FirefoxDriver(capabilities);
+        //maximize window
+        driver.manage().window().maximize();
         driver.get(testUrl);
     }
 

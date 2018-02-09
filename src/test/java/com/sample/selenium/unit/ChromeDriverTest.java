@@ -30,7 +30,6 @@ public class ChromeDriverTest {
 
         // Create a new instance of the Chrome driver
         driver = new ChromeDriver();
-
         //maximize window
         driver.manage().window().maximize();
         driver.get(testUrl);

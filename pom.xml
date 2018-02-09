@@ -26,8 +26,8 @@
         <sonar.pluginName>Cucumber Gherkin</sonar.pluginName>
         <sonar.pluginClass>org.sonar.plugins.gherkin.GherkinPlugin</sonar.pluginClass>
         <sonar.skipDependenciesPackaging>true</sonar.skipDependenciesPackaging>
-        <sonar.jacoco.reportPath>${project.basedir}/../target/coverage-reports/jacoco.exec</sonar.jacoco.reportPath>
-        <sonar.jacoco.itreportPath>${project.basedir}/../target/coverage-reports/jacoco.exec</sonar.jacoco.itreportPath>
+        <sonar.jacoco.reportPath>${project.basedir}/target/coverage-reports/jacoco.exec</sonar.jacoco.reportPath>
+        <sonar.jacoco.itreportPath>${project.basedir}/target/coverage-reports/jacoco.exec</sonar.jacoco.itreportPath>
 
         <maven.surefirePlugin.version>2.20.1</maven.surefirePlugin.version>
         <maven.failsafePlugin.version>2.19.1</maven.failsafePlugin.version>
@@ -241,32 +241,28 @@
                     </execution>
                 </executions>
 
-                <dependencies>
-                    <dependency>
-                        <groupId>org.apache.maven.surefire</groupId>
-                        <artifactId>surefire-junit47</artifactId>
-                        <version>${maven.surefirePlugin.version}</version>
-                    </dependency>
-                </dependencies>
+                <!--<dependencies>-->
+                    <!--<dependency>-->
+                        <!--<groupId>org.apache.maven.surefire</groupId>-->
+                        <!--<artifactId>surefire-junit47</artifactId>-->
+                        <!--<version>${maven.surefirePlugin.version}</version>-->
+                    <!--</dependency>-->
+                <!--</dependencies>-->
                 <configuration>
-                    <parallel>methods</parallel>
-                    <threadCount>10</threadCount>
+                    <!--<parallel>methods</parallel>-->
+                    <!--<threadCount>10</threadCount>-->
                     <suiteXmlFiles>
                         <suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
                     </suiteXmlFiles>
-                    <properties>
-                        <property>
-                            <name>suitethreadpoolsize</name>
-                            <value>2</value>
-                        </property>
-                    </properties>
-
+                    <!--<properties>-->
+                        <!--<property>-->
+                            <!--<name>suitethreadpoolsize</name>-->
+                            <!--<value>2</value>-->
+                        <!--</property>-->
+                    <!--</properties>-->
                 </configuration>
-
-
-
-
                 <!-- we need a way to also run junit tests as part of surefire plugin-->
+                <!-- if we uncomment the code above, then junit runs but not testng tests -->
             </plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -292,79 +288,104 @@
 					 </execution>
 				   </executions>
 			</plugin>
-            <!-- this is needed to get the cucumber integration tests to appear in the jacoco report-->
-
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.8.0</version>
+                <configuration>
+                    <destFile>${basedir}/target/coverage-reports/jacoco-unit.exec</destFile>
+                    <dataFile>${basedir}/target/coverage-reports/jacoco-unit.exec</dataFile>
+                </configuration>
                 <executions>
                     <execution>
-                        <id>pre-unit-test</id>
+                        <id>jacoco-initialize</id>
                         <goals>
                             <goal>prepare-agent</goal>
                         </goals>
-                        <configuration>
-                            <destFile>{$project.build.directory}/coverage-reports/jacoco.exe</destFile>
-                            <propertyName>surefireJacocoAgent</propertyName>
-                        </configuration>
                     </execution>
                     <execution>
-                        <id>pre-integration-test</id>
-                        <goals>
-                            <goal>prepare-agent-integration</goal>
-                        </goals>
-                        <configuration>
-                            <destFile>{$project.build.directory}/coverage-reports/jacoco-it.exec</destFile>
-                            <propertyName>failsafeJacocoAgent</propertyName>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>post-unit-test</id>
-                        <phase>test</phase>
+                        <id>jacoco-site</id>
+                        <phase>package</phase>
                         <goals>
                             <goal>report</goal>
                         </goals>
-                        <configuration>
-                            <dataFile>{$project.build.directory}/coverage-reports/jacoco.exec</dataFile>
-                            <outputDirectory>{$project.reporting.directory}/jacoco</outputDirectory>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>post-integration-test</id>
-                        <goals>
-                            <goal>report-integration</goal>
-                        </goals>
-                        <configuration>
-                            <dataFile>{$project.build.directory}/coverage-reports/jacoco-it.exec</dataFile>
-                            <outputDirectory>{$project.reporting.directory}/jacoco</outputDirectory>
-                        </configuration>
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-failsafe-plugin</artifactId>
-                <version>${maven.failsafePlugin.version}</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>integration-test</goal>
-                            <goal>verify</goal>
-                        </goals>
+
+            <!-- this is needed to get the cucumber integration tests to appear in the jacoco report-->
+
+            <!--<plugin>-->
+                <!--<groupId>org.jacoco</groupId>-->
+                <!--<artifactId>jacoco-maven-plugin</artifactId>-->
+                <!--<version>0.8.0</version>-->
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<id>pre-unit-test</id>-->
+                        <!--<goals>-->
+                            <!--<goal>prepare-agent</goal>-->
+                        <!--</goals>-->
                         <!--<configuration>-->
-                            <!--<argLine>${failsafeJacocoAgent}</argLine>-->
+                            <!--<destFile>${project.basedir}/target/coverage-reports/jacoco.exec</destFile>-->
+                            <!--<propertyName>surefireJacocoAgent</propertyName>-->
                         <!--</configuration>-->
-                    </execution>
-                </executions>
-                <configuration>
-                    <includes>
-                        <!-- add your particular runner class -->
-                        <include>**/*CucumberRunner*.java</include>
-                    </includes>
-                    <testFailureIgnore>true</testFailureIgnore>
-                </configuration>
-            </plugin>
+                    <!--</execution>-->
+                    <!--<execution>-->
+                        <!--<id>pre-integration-test</id>-->
+                        <!--<goals>-->
+                            <!--<goal>prepare-agent-integration</goal>-->
+                        <!--</goals>-->
+                        <!--<configuration>-->
+                            <!--<destFile>${project.basedir}/target/coverage-reports/jacoco-it.exec</destFile>-->
+                            <!--<propertyName>failsafeJacocoAgent</propertyName>-->
+                        <!--</configuration>-->
+                    <!--</execution>-->
+                    <!--<execution>-->
+                        <!--<id>post-unit-test</id>-->
+                        <!--<phase>test</phase>-->
+                        <!--<goals>-->
+                            <!--<goal>report</goal>-->
+                        <!--</goals>-->
+                        <!--<configuration>-->
+                            <!--<dataFile>${project.basedir}/target/coverage-reports/jacoco.exec</dataFile>-->
+                            <!--<outputDirectory>${project.reporting.directory}/jacoco</outputDirectory>-->
+                        <!--</configuration>-->
+                    <!--</execution>-->
+                    <!--<execution>-->
+                        <!--<id>post-integration-test</id>-->
+                        <!--<goals>-->
+                            <!--<goal>report-integration</goal>-->
+                        <!--</goals>-->
+                        <!--<configuration>-->
+                            <!--<dataFile>${project.basedir}/target/coverage-reports/jacoco-it.exec</dataFile>-->
+                            <!--<outputDirectory>${project.reporting.directory}/jacoco</outputDirectory>-->
+                        <!--</configuration>-->
+                    <!--</execution>-->
+                <!--</executions>-->
+            <!--</plugin>-->
+            <!--<plugin>-->
+                <!--<groupId>org.apache.maven.plugins</groupId>-->
+                <!--<artifactId>maven-failsafe-plugin</artifactId>-->
+                <!--<version>${maven.failsafePlugin.version}</version>-->
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<goals>-->
+                            <!--<goal>integration-test</goal>-->
+                            <!--<goal>verify</goal>-->
+                        <!--</goals>-->
+                        <!--&lt;!&ndash;<configuration>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<argLine>${failsafeJacocoAgent}</argLine>&ndash;&gt;-->
+                        <!--&lt;!&ndash;</configuration>&ndash;&gt;-->
+                    <!--</execution>-->
+                <!--</executions>-->
+                <!--<configuration>-->
+                    <!--<includes>-->
+                        <!--&lt;!&ndash; add your particular runner class &ndash;&gt;-->
+                        <!--<include>**/*CucumberRunner*.java</include>-->
+                    <!--</includes>-->
+                    <!--<testFailureIgnore>true</testFailureIgnore>-->
+                <!--</configuration>-->
+            <!--</plugin>-->
 
         </plugins>
         <resources>

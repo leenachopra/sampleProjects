@@ -15,5 +15,8 @@ as well as code around Page Object design pattern for SeleniumWebdriver TestNg t
 mvn clean test
 ```
 
+## Execute jacoco
+mvn clean package
+
 #The result looks as following:
 ##![](./docs/img/autotests.gif)

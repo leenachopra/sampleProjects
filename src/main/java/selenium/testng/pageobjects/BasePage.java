@@ -3,8 +3,13 @@ package selenium.testng.pageobjects;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import selenium.testng.BrowserSetup;
 
 public class BasePage {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(BasePage.class);
     protected WebDriver driver;
     private By signInButton = By.linkText("Sign in");
 
@@ -13,11 +18,13 @@ public class BasePage {
     }
 
     public SignInPage clickSignInBtn() {
-        System.out.println("clicking on sign in button");
+        LOGGER.info("clicking on sign in button");
         WebElement signInBtnElement=driver.findElement(signInButton);
-        if(signInBtnElement.isDisplayed()||signInBtnElement.isEnabled())
+        if(signInBtnElement.isDisplayed()||signInBtnElement.isEnabled()) {
             signInBtnElement.click();
-        else System.out.println("Element not found");
+        } else  {
+            LOGGER.info("Element not found");
+        }
         return new SignInPage(driver);
     }
 

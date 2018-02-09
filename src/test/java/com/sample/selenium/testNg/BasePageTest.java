@@ -1,6 +1,8 @@
 package com.sample.selenium.testNg;
 
 import org.junit.Assert;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -10,6 +12,7 @@ import selenium.testng.pageobjects.BasePage;
 
 public class BasePageTest extends BrowserSetup{
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(BasePageTest.class);
     private WebDriver driver;
 
     @BeforeClass
@@ -19,7 +22,7 @@ public class BasePageTest extends BrowserSetup{
 
     @Test
     public void verifyHomePage() {
-        System.out.println("Home page test...");
+        LOGGER.info("Home page test...");
         BasePage basePage = new BasePage(driver);
         Assert.assertTrue("Home page title doesn't match", basePage.verifyBasePageTitle());
     }

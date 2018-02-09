@@ -67,7 +67,7 @@ public class CalculatorRunSteps {
 
     @Before({"not @foo"})
     public void before() {
-        System.out.println("Runs before scenarios *not* tagged with @foo");
+        LOGGER.info("Runs before scenarios *not* tagged with @foo");
     }
 
     @After
