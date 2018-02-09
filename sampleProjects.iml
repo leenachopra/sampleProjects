@@ -294,7 +294,7 @@
     <orderEntry type="library" name="Maven: info.cukes:cucumber-html:0.2.3" level="project" />
     <orderEntry type="library" name="Maven: info.cukes:cucumber-jvm-deps:1.0.5" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: info.cukes:gherkin:2.12.2" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: info.cukes:cucumber-spring:1.2.5" level="project" />
+    <orderEntry type="library" name="Maven: info.cukes:cucumber-jvm:1.2.5" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.slf4j:slf4j-simple:1.7.25" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.25" level="project" />
     <orderEntry type="library" name="Maven: jndi:jndi:1.2.1" level="project" />

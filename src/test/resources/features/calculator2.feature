@@ -1,6 +1,6 @@
 @JiraTestId
 
-Feature: Basic Arithmetic
+Feature: Basic Arithmetic 2
 
   Background: A Calculator
     Given a calculator I just turned on

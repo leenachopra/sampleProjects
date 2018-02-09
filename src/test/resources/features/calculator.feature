@@ -1,6 +1,7 @@
 @JiraTestId
 
 Feature: Basic Arithmetic
+#This is specflow and specby example scenariosre: Basic Arithmetic
 
   Background: A Calculator
     Given a calculator I just turned on

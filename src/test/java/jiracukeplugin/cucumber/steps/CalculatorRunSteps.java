@@ -16,6 +16,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import cucumber.api.Scenario;
 
+//Source from: https://github.com/cucumber/cucumber-jvm/tree/master/examples/java-calculator-testng with my own tweaks
 public class CalculatorRunSteps {
     private double total;
     private Calculator calc;
@@ -39,20 +40,23 @@ public class CalculatorRunSteps {
         calc = new Calculator();
     }
 
+    /*
     @When("^I add (-?\\d+) and (-?\\d+)$")
     public void addTwoNumbers(int arg1, int arg2) {
 
         calc.add(arg1, arg2);
-    }
+    }*/
 
     @Then("^the result is (\\d+)$")
     public void validateResult(double result) {
         currentRunStatus = (total == result);
         // delta is set to 0 indicating 0 preceision loss
-        Assert.assertEquals(total, result, 0);
+        Assert.assertEquals(result, (double)calc.value(), 0);
+        //Assert.assertEquals(total, result, 0);
     }
 
-    @When("^I add (\\d+) and (\\d+)$")
+
+    @When("^I add (-?\\d+) and (-?\\d+)$")
     public void adding(int arg1, int arg2) {
         calc.push(arg1);
         calc.push(arg2);
@@ -65,14 +69,10 @@ public class CalculatorRunSteps {
         calc.push(what);
     }
 
-    @Before({"not @foo"})
-    public void before() {
-        LOGGER.info("Runs before scenarios *not* tagged with @foo");
-    }
-
     @After
     public void after(Scenario scenario) {
-        jiraClientHelper.updateJiraStatus(scenario.getSourceTagNames().iterator().next().replace("@", ""), currentRunStatus);
+        //For now let's just not call this until we get cucmber tests to run.
+        //jiraClientHelper.updateJiraStatus(scenario.getSourceTagNames().iterator().next().replace("@", ""), currentRunStatus);
     }
 
     @Given("^the previous entries:$")

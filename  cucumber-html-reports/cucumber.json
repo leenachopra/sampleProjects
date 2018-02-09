@@ -1,0 +1,1027 @@
+[
+  {
+    "line": 3,
+    "elements": [
+      {
+        "comments": [
+          {
+            "line": 4,
+            "value": "#This is specflow and specby example scenariosre: Basic Arithmetic"
+          }
+        ],
+        "line": 6,
+        "name": "A Calculator",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 345970330,
+              "status": "passed"
+            },
+            "line": 7,
+            "name": "a calculator I just turned on",
+            "match": {
+              "location": "CalculatorRunSteps.initCalcI_just_turned_on()"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "before": [
+          {
+            "result": {
+              "duration": 152860391,
+              "status": "passed"
+            },
+            "match": {
+              "location": "CalculatorRunSteps.init()"
+            }
+          },
+          {
+            "result": {
+              "duration": 10621853,
+              "status": "passed"
+            },
+            "match": {
+              "location": "CalculatorRunSteps.setUp(Scenario)"
+            }
+          }
+        ],
+        "line": 9,
+        "name": "Addition",
+        "description": "",
+        "id": "basic-arithmetic;addition",
+        "after": [
+          {
+            "result": {
+              "duration": 34560,
+              "status": "passed"
+            },
+            "match": {
+              "location": "CalculatorRunSteps.after(Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 7771296,
+              "status": "passed"
+            },
+            "comments": [
+              {
+                "line": 10,
+                "value": "# Try to change one of the values below to provoke a failure"
+              }
+            ],
+            "line": 11,
+            "name": "I add 4 and 5",
+            "match": {
+              "arguments": [
+                {
+                  "val": "4",
+                  "offset": 6
+                },
+                {
+                  "val": "5",
+                  "offset": 12
+                }
+              ],
+              "location": "CalculatorRunSteps.adding(int,int)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 3091623,
+              "status": "passed"
+            },
+            "line": 12,
+            "name": "the result is 9",
+            "match": {
+              "arguments": [
+                {
+                  "val": "9",
+                  "offset": 14
+                }
+              ],
+              "location": "CalculatorRunSteps.validateResult(double)"
+            },
+            "keyword": "Then "
+          }
+        ]
+      },
+      {
+        "comments": [
+          {
+            "line": 4,
+            "value": "#This is specflow and specby example scenariosre: Basic Arithmetic"
+          }
+        ],
+        "line": 6,
+        "name": "A Calculator",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 689492,
+              "status": "passed"
+            },
+            "line": 7,
+            "name": "a calculator I just turned on",
+            "match": {
+              "location": "CalculatorRunSteps.initCalcI_just_turned_on()"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "before": [
+          {
+            "result": {
+              "duration": 33280,
+              "status": "passed"
+            },
+            "match": {
+              "location": "CalculatorRunSteps.init()"
+            }
+          },
+          {
+            "result": {
+              "duration": 1567145,
+              "status": "passed"
+            },
+            "match": {
+              "location": "CalculatorRunSteps.setUp(Scenario)"
+            }
+          }
+        ],
+        "line": 27,
+        "name": "Many additions",
+        "description": "",
+        "id": "basic-arithmetic;many-additions;single-digits;2",
+        "after": [
+          {
+            "result": {
+              "duration": 15360,
+              "status": "passed"
+            },
+            "match": {
+              "location": "CalculatorRunSteps.after(Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 38108965,
+              "status": "passed"
+            },
+            "line": 15,
+            "name": "the previous entries:",
+            "match": {
+              "location": "CalculatorRunSteps.thePreviousEntries(CalculatorRunSteps$Entry\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "first",
+                  "second",
+                  "operation"
+                ],
+                "line": 16
+              },
+              {
+                "cells": [
+                  "1",
+                  "1",
+                  "+"
+                ],
+                "line": 17
+              },
+              {
+                "cells": [
+                  "2",
+                  "1",
+                  "+"
+                ],
+                "line": 18
+              }
+            ],
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 139946,
+              "status": "passed"
+            },
+            "line": 20,
+            "name": "I press +",
+            "match": {
+              "arguments": [
+                {
+                  "val": "+",
+                  "offset": 8
+                }
+              ],
+              "location": "CalculatorRunSteps.pressButton(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 1956691,
+              "status": "passed"
+            },
+            "line": 21,
+            "name": "I add 1 and 2",
+            "match": {
+              "arguments": [
+                {
+                  "val": "1",
+                  "offset": 6
+                },
+                {
+                  "val": "2",
+                  "offset": 12
+                }
+              ],
+              "location": "CalculatorRunSteps.adding(int,int)"
+            },
+            "matchedColumns": [
+              0,
+              1
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 81494,
+              "status": "passed"
+            },
+            "line": 22,
+            "name": "I press +",
+            "match": {
+              "arguments": [
+                {
+                  "val": "+",
+                  "offset": 8
+                }
+              ],
+              "location": "CalculatorRunSteps.pressButton(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 104106,
+              "status": "passed"
+            },
+            "line": 23,
+            "name": "the result is 8",
+            "match": {
+              "arguments": [
+                {
+                  "val": "8",
+                  "offset": 14
+                }
+              ],
+              "location": "CalculatorRunSteps.validateResult(double)"
+            },
+            "matchedColumns": [
+              2
+            ],
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "line": 1,
+            "name": "@JiraTestId"
+          }
+        ]
+      },
+      {
+        "comments": [
+          {
+            "line": 4,
+            "value": "#This is specflow and specby example scenariosre: Basic Arithmetic"
+          }
+        ],
+        "line": 6,
+        "name": "A Calculator",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 26453,
+              "status": "passed"
+            },
+            "line": 7,
+            "name": "a calculator I just turned on",
+            "match": {
+              "location": "CalculatorRunSteps.initCalcI_just_turned_on()"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "before": [
+          {
+            "result": {
+              "duration": 34134,
+              "status": "passed"
+            },
+            "match": {
+              "location": "CalculatorRunSteps.init()"
+            }
+          },
+          {
+            "result": {
+              "duration": 2153811,
+              "status": "passed"
+            },
+            "match": {
+              "location": "CalculatorRunSteps.setUp(Scenario)"
+            }
+          }
+        ],
+        "line": 28,
+        "name": "Many additions",
+        "description": "",
+        "id": "basic-arithmetic;many-additions;single-digits;3",
+        "after": [
+          {
+            "result": {
+              "duration": 32427,
+              "status": "passed"
+            },
+            "match": {
+              "location": "CalculatorRunSteps.after(Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 1760852,
+              "status": "passed"
+            },
+            "line": 15,
+            "name": "the previous entries:",
+            "match": {
+              "location": "CalculatorRunSteps.thePreviousEntries(CalculatorRunSteps$Entry\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "first",
+                  "second",
+                  "operation"
+                ],
+                "line": 16
+              },
+              {
+                "cells": [
+                  "1",
+                  "1",
+                  "+"
+                ],
+                "line": 17
+              },
+              {
+                "cells": [
+                  "2",
+                  "1",
+                  "+"
+                ],
+                "line": 18
+              }
+            ],
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 114346,
+              "status": "passed"
+            },
+            "line": 20,
+            "name": "I press +",
+            "match": {
+              "arguments": [
+                {
+                  "val": "+",
+                  "offset": 8
+                }
+              ],
+              "location": "CalculatorRunSteps.pressButton(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 1045758,
+              "status": "passed"
+            },
+            "line": 21,
+            "name": "I add 2 and 3",
+            "match": {
+              "arguments": [
+                {
+                  "val": "2",
+                  "offset": 6
+                },
+                {
+                  "val": "3",
+                  "offset": 12
+                }
+              ],
+              "location": "CalculatorRunSteps.adding(int,int)"
+            },
+            "matchedColumns": [
+              0,
+              1
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 93866,
+              "status": "passed"
+            },
+            "line": 22,
+            "name": "I press +",
+            "match": {
+              "arguments": [
+                {
+                  "val": "+",
+                  "offset": 8
+                }
+              ],
+              "location": "CalculatorRunSteps.pressButton(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 210773,
+              "status": "passed"
+            },
+            "line": 23,
+            "name": "the result is 10",
+            "match": {
+              "arguments": [
+                {
+                  "val": "10",
+                  "offset": 14
+                }
+              ],
+              "location": "CalculatorRunSteps.validateResult(double)"
+            },
+            "matchedColumns": [
+              2
+            ],
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "line": 1,
+            "name": "@JiraTestId"
+          }
+        ]
+      },
+      {
+        "comments": [
+          {
+            "line": 4,
+            "value": "#This is specflow and specby example scenariosre: Basic Arithmetic"
+          }
+        ],
+        "line": 6,
+        "name": "A Calculator",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 34987,
+              "status": "passed"
+            },
+            "line": 7,
+            "name": "a calculator I just turned on",
+            "match": {
+              "location": "CalculatorRunSteps.initCalcI_just_turned_on()"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "before": [
+          {
+            "result": {
+              "duration": 49920,
+              "status": "passed"
+            },
+            "match": {
+              "location": "CalculatorRunSteps.init()"
+            }
+          },
+          {
+            "result": {
+              "duration": 350293,
+              "status": "passed"
+            },
+            "match": {
+              "location": "CalculatorRunSteps.setUp(Scenario)"
+            }
+          }
+        ],
+        "line": 32,
+        "name": "Many additions",
+        "description": "",
+        "id": "basic-arithmetic;many-additions;double-digits;2",
+        "after": [
+          {
+            "result": {
+              "duration": 34133,
+              "status": "passed"
+            },
+            "match": {
+              "location": "CalculatorRunSteps.after(Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 1144319,
+              "status": "passed"
+            },
+            "line": 15,
+            "name": "the previous entries:",
+            "match": {
+              "location": "CalculatorRunSteps.thePreviousEntries(CalculatorRunSteps$Entry\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "first",
+                  "second",
+                  "operation"
+                ],
+                "line": 16
+              },
+              {
+                "cells": [
+                  "1",
+                  "1",
+                  "+"
+                ],
+                "line": 17
+              },
+              {
+                "cells": [
+                  "2",
+                  "1",
+                  "+"
+                ],
+                "line": 18
+              }
+            ],
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 299520,
+              "status": "passed"
+            },
+            "line": 20,
+            "name": "I press +",
+            "match": {
+              "arguments": [
+                {
+                  "val": "+",
+                  "offset": 8
+                }
+              ],
+              "location": "CalculatorRunSteps.pressButton(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 236800,
+              "status": "passed"
+            },
+            "line": 21,
+            "name": "I add 10 and 20",
+            "match": {
+              "arguments": [
+                {
+                  "val": "10",
+                  "offset": 6
+                },
+                {
+                  "val": "20",
+                  "offset": 13
+                }
+              ],
+              "location": "CalculatorRunSteps.adding(int,int)"
+            },
+            "matchedColumns": [
+              0,
+              1
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 104107,
+              "status": "passed"
+            },
+            "line": 22,
+            "name": "I press +",
+            "match": {
+              "arguments": [
+                {
+                  "val": "+",
+                  "offset": 8
+                }
+              ],
+              "location": "CalculatorRunSteps.pressButton(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 161706,
+              "status": "passed"
+            },
+            "line": 23,
+            "name": "the result is 35",
+            "match": {
+              "arguments": [
+                {
+                  "val": "35",
+                  "offset": 14
+                }
+              ],
+              "location": "CalculatorRunSteps.validateResult(double)"
+            },
+            "matchedColumns": [
+              2
+            ],
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "line": 1,
+            "name": "@JiraTestId"
+          }
+        ]
+      },
+      {
+        "comments": [
+          {
+            "line": 4,
+            "value": "#This is specflow and specby example scenariosre: Basic Arithmetic"
+          }
+        ],
+        "line": 6,
+        "name": "A Calculator",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 31573,
+              "status": "passed"
+            },
+            "line": 7,
+            "name": "a calculator I just turned on",
+            "match": {
+              "location": "CalculatorRunSteps.initCalcI_just_turned_on()"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "before": [
+          {
+            "result": {
+              "duration": 57173,
+              "status": "passed"
+            },
+            "match": {
+              "location": "CalculatorRunSteps.init()"
+            }
+          },
+          {
+            "result": {
+              "duration": 526506,
+              "status": "passed"
+            },
+            "match": {
+              "location": "CalculatorRunSteps.setUp(Scenario)"
+            }
+          }
+        ],
+        "line": 33,
+        "name": "Many additions",
+        "description": "",
+        "id": "basic-arithmetic;many-additions;double-digits;3",
+        "after": [
+          {
+            "result": {
+              "duration": 21333,
+              "status": "passed"
+            },
+            "match": {
+              "location": "CalculatorRunSteps.after(Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 6149538,
+              "status": "passed"
+            },
+            "line": 15,
+            "name": "the previous entries:",
+            "match": {
+              "location": "CalculatorRunSteps.thePreviousEntries(CalculatorRunSteps$Entry\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "first",
+                  "second",
+                  "operation"
+                ],
+                "line": 16
+              },
+              {
+                "cells": [
+                  "1",
+                  "1",
+                  "+"
+                ],
+                "line": 17
+              },
+              {
+                "cells": [
+                  "2",
+                  "1",
+                  "+"
+                ],
+                "line": 18
+              }
+            ],
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 76374,
+              "status": "passed"
+            },
+            "line": 20,
+            "name": "I press +",
+            "match": {
+              "arguments": [
+                {
+                  "val": "+",
+                  "offset": 8
+                }
+              ],
+              "location": "CalculatorRunSteps.pressButton(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 418986,
+              "status": "passed"
+            },
+            "line": 21,
+            "name": "I add 20 and 30",
+            "match": {
+              "arguments": [
+                {
+                  "val": "20",
+                  "offset": 6
+                },
+                {
+                  "val": "30",
+                  "offset": 13
+                }
+              ],
+              "location": "CalculatorRunSteps.adding(int,int)"
+            },
+            "matchedColumns": [
+              0,
+              1
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 107520,
+              "status": "passed"
+            },
+            "line": 22,
+            "name": "I press +",
+            "match": {
+              "arguments": [
+                {
+                  "val": "+",
+                  "offset": 8
+                }
+              ],
+              "location": "CalculatorRunSteps.pressButton(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 166400,
+              "status": "passed"
+            },
+            "line": 23,
+            "name": "the result is 55",
+            "match": {
+              "arguments": [
+                {
+                  "val": "55",
+                  "offset": 14
+                }
+              ],
+              "location": "CalculatorRunSteps.validateResult(double)"
+            },
+            "matchedColumns": [
+              2
+            ],
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "line": 1,
+            "name": "@JiraTestId"
+          }
+        ]
+      }
+    ],
+    "name": "Basic Arithmetic",
+    "description": "",
+    "id": "basic-arithmetic",
+    "keyword": "Feature",
+    "uri": "calculator.feature",
+    "tags": [
+      {
+        "line": 1,
+        "name": "@JiraTestId"
+      }
+    ]
+  },
+  {
+    "line": 3,
+    "elements": [
+      {
+        "line": 5,
+        "name": "A Calculator",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 80639,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "a calculator I just turned on",
+            "match": {
+              "location": "CalculatorRunSteps.initCalcI_just_turned_on()"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "before": [
+          {
+            "result": {
+              "duration": 40960,
+              "status": "passed"
+            },
+            "match": {
+              "location": "CalculatorRunSteps.init()"
+            }
+          },
+          {
+            "result": {
+              "duration": 353706,
+              "status": "passed"
+            },
+            "match": {
+              "location": "CalculatorRunSteps.setUp(Scenario)"
+            }
+          }
+        ],
+        "line": 8,
+        "name": "Addition",
+        "description": "",
+        "id": "basic-arithmetic-2;addition",
+        "after": [
+          {
+            "result": {
+              "duration": 23040,
+              "status": "passed"
+            },
+            "match": {
+              "location": "CalculatorRunSteps.after(Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 467626,
+              "status": "passed"
+            },
+            "comments": [
+              {
+                "line": 9,
+                "value": "# Try to change one of the values below to provoke a failure"
+              }
+            ],
+            "line": 10,
+            "name": "I add -2 and 5",
+            "match": {
+              "arguments": [
+                {
+                  "val": "-2",
+                  "offset": 6
+                },
+                {
+                  "val": "5",
+                  "offset": 13
+                }
+              ],
+              "location": "CalculatorRunSteps.adding(int,int)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 11,
+            "name": "the result is -3",
+            "match": {},
+            "keyword": "Then "
+          }
+        ]
+      }
+    ],
+    "name": "Basic Arithmetic 2",
+    "description": "",
+    "id": "basic-arithmetic-2",
+    "keyword": "Feature",
+    "uri": "calculator2.feature",
+    "tags": [
+      {
+        "line": 1,
+        "name": "@JiraTestId"
+      }
+    ]
+  }
+]
