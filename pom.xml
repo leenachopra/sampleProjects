@@ -211,11 +211,13 @@
         </dependency>
         -->
 
-        <!--<dependency>-->
-            <!--<groupId>org.apache.maven.surefire</groupId>-->
-            <!--<artifactId>surefire-testng</artifactId>-->
-            <!--<version>2.14.1</version>-->
-        <!--</dependency>-->
+        <!-- custom cucmber report : http://mkolisnyk.blogspot.com/2015/05/cucumber-jvm-advanced-reporting.html -->
+        <dependency>
+            <groupId>com.github.mkolisnyk</groupId>
+            <artifactId>cucumber-reports</artifactId>
+            <version>1.0.7</version>
+        </dependency>
+
     </dependencies>
 
     <build>

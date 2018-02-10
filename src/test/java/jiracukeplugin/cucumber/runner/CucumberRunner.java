@@ -11,9 +11,8 @@ import org.junit.runner.RunWith;
 @CucumberOptions(  monochrome = true,
         features = "src/test/resources/features/",
         format = { "pretty","html:target/cucumber-html-reports",
-                "json: cucumber-html-reports/cucumber.json" },
+                "json:cucumber-html-reports/cucumber.json" },
         dryRun = false,
         glue = "jiracukeplugin.cucumber.steps" )
-
 public class CucumberRunner {
 }

@@ -2,6 +2,7 @@
 
 #maven
 target
+cucumber-html-reports
 
 
 #mac

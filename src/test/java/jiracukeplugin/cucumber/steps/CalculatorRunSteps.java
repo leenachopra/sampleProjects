@@ -1,5 +1,7 @@
 package jiracukeplugin.cucumber.steps;
 
+import com.github.mkolisnyk.cucumber.reporting.CucumberResultsOverview;
+import com.github.mkolisnyk.cucumber.reporting.CucumberUsageReporting;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
@@ -73,6 +75,12 @@ public class CalculatorRunSteps {
     public void after(Scenario scenario) {
         //For now let's just not call this until we get cucmber tests to run.
         //jiraClientHelper.updateJiraStatus(scenario.getSourceTagNames().iterator().next().replace("@", ""), currentRunStatus);
+
+        //try {
+            //generateReport();
+        //} catch (Throwable throwable) {
+         //   throwable.printStackTrace();
+        //}
     }
 
     @Given("^the previous entries:$")
@@ -89,6 +97,37 @@ public class CalculatorRunSteps {
         Integer second;
         String operation;
     }
+
+    public void generateReport() throws Exception {
+        CucumberResultsOverview results = new CucumberResultsOverview();
+        results.setOutputDirectory(".target");
+        results.setOutputName("cucumber-results");
+        results.setSourceFile("cucumber-html-reports/cucumber.json");
+        results.execute();
+
+
+        CucumberUsageReporting report = new CucumberUsageReporting();
+        report.setOutputDirectory("target");
+        report.setJsonUsageFile("cucumber-html-reports/cucumber-usage.json");
+        report.executeReport();
+    }
+
+//    public static void generateReport() throws Throwable
+//    {
+//        CucumberResultsOverview results = new CucumberResultsOverview();
+//        results.setOutputDirectory(".//target");
+//        //target\cucumber-html-reports
+//
+//        results.setOutputDirectory("target/cucumber-html-reports/");
+//        results.setOutputName("cucumber-results");
+//        results.setSourceFile("./target/cucumber-html-reports/cucumber.json");
+//        results.execute();
+//
+//        CucumberUsageReporting report = new CucumberUsageReporting();
+//        report.setOutputDirectory("target/cucumber-html-reports/");
+//        report.setJsonUsageFile("./target/cucumber-html-reports/cucumber-usage.json");
+//        report.executeReport();
+//    }
 
 }
 
