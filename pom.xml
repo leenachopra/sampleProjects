@@ -62,6 +62,13 @@
                 <checksumPolicy>warn</checksumPolicy>
             </releases>
         </repository>
+        <!--<repository>-->
+            <!--<id>org.source.repo</id>-->
+            <!--<url>http://central.maven.org/maven2/</url>-->
+            <!--<snapshots>-->
+                <!--<enabled>true</enabled>-->
+            <!--</snapshots>-->
+        <!--</repository>-->
     </repositories>
 
     <dependencies>
