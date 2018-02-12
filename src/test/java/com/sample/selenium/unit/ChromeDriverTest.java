@@ -25,7 +25,7 @@ public class ChromeDriverTest {
     public void prepare() {
         //setup chromedriver
 
-        testUrl = "http://www.google.com";
+        testUrl = "http://www.yahoo.com";
         System.setProperty("webdriver.chrome.driver", "webdriver/chromedriver.exe");
 
         // Create a new instance of the Chrome driver
@@ -42,7 +42,7 @@ public class ChromeDriverTest {
             (new WebDriverWait(driver, 5))
                 .until(new ExpectedCondition<Boolean>() {
                     public Boolean apply(WebDriver d) {
-                        return d.getTitle().equals("Google");
+                        return d.getTitle().equals("Yahoo");
                     }
                 })
         );

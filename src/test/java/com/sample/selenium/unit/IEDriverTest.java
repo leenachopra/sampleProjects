@@ -22,7 +22,7 @@ public class IEDriverTest {
 
     @Before
     public void prepare() {
-        testUrl = "http://www.google.com";
+        testUrl = "http://www.yahoo.com";
 
         DesiredCapabilities capability = DesiredCapabilities.internetExplorer();
         capability.setCapability(InternetExplorerDriver.IGNORE_ZOOM_SETTING, true);
@@ -45,7 +45,7 @@ public class IEDriverTest {
             (new WebDriverWait(driver, 5))
                 .until(new ExpectedCondition<Boolean>() {
                     public Boolean apply(WebDriver d) {
-                        return d.getTitle().equals("Google");
+                        return d.getTitle().equals("Yahoo");
                     }
                 })
         );

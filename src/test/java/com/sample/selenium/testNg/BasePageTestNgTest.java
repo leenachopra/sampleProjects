@@ -4,15 +4,14 @@ import org.junit.Assert;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import org.openqa.selenium.WebDriver;
 import selenium.testng.BrowserSetup;
 import selenium.testng.pageobjects.BasePage;
 
-public class BasePageTest extends BrowserSetup{
+public class BasePageTestNgTest extends BrowserSetup{
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(BasePageTest.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(BasePageTestNgTest.class);
     private WebDriver driver;
 
     @BeforeClass

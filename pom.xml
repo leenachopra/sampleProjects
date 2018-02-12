@@ -38,8 +38,14 @@
 		<env>qa</env>
     </properties>
 
-
     <repositories>
+        <repository>
+            <id>org.source.repo</id>
+            <url>http://central.maven.org/maven2/</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
         <!--<repository>-->
             <!--<id>central</id>-->
             <!--<name>Atlassian Public Repository</name>-->
@@ -49,6 +55,7 @@
                 <!--<enabled>false</enabled>-->
             <!--</snapshots>-->
         <!--</repository>-->
+        <!-- jira integration -->
         <repository>
             <id>atlassian-public</id>
             <url>https://maven.atlassian.com/repository/public</url>
@@ -62,13 +69,7 @@
                 <checksumPolicy>warn</checksumPolicy>
             </releases>
         </repository>
-        <!--<repository>-->
-            <!--<id>org.source.repo</id>-->
-            <!--<url>http://central.maven.org/maven2/</url>-->
-            <!--<snapshots>-->
-                <!--<enabled>true</enabled>-->
-            <!--</snapshots>-->
-        <!--</repository>-->
+
     </repositories>
 
     <dependencies>
@@ -177,11 +178,11 @@
             <!--<version>${cucumber.version}</version>-->
             <!--<scope>test</scope>-->
         <!--</dependency>-->
-        <dependency>
-            <groupId>info.cukes</groupId>
-            <artifactId>cucumber-jvm</artifactId>
-            <version>${cucumber.version}</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>info.cukes</groupId>-->
+            <!--<artifactId>cucumber-jvm</artifactId>-->
+            <!--<version>${cucumber.version}</version>-->
+        <!--</dependency>-->
 
         <!-- logging -->
         <dependency>
@@ -248,35 +249,53 @@
                 <inherited>true</inherited>
                 <executions>
                     <execution>
+                        <id>JUnit-execution</id>
                         <phase>test</phase>
                         <goals>
                             <goal>test</goal>
                         </goals>
+                        <configuration>
+
+                            <skip>false</skip>
+                            <!-- used to skip TestNg provider -->
+                            <testNGArtifactName>dev:null</testNGArtifactName>
+                            <!--<excludes>-->
+                                <!--<exclude>%regex[.*TestNg.*]</exclude>-->
+                            <!--</excludes>-->
+                            <includes>
+                                <include>**/unit*/*.java</include>
+                            </includes>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>TestNg-execution</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                        <configuration>
+                            <!-- overwrite skip from default config -->
+                            <skip>false</skip>
+                            <includes>
+                                <!--<include>%regex[.*TestNg.*]</include> -->
+                                <include>**/*TestNgTest.java</include>
+                            </includes>
+                            <!-- used to skip JUnit provider -->
+                            <junitArtifactName>dev:null</junitArtifactName>
+                            <!-- to continue on next execution in case of failures here -->
+                            <testFailureIgnore>true</testFailureIgnore>
+                            <!-- in order to run testNg and junit on command prompt together, no need for suiteXmlFiles -->
+                            <!--<suiteXmlFiles>-->
+                            <!--<suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>-->
+                            <!--</suiteXmlFiles>-->
+                        </configuration>
                     </execution>
                 </executions>
-
-                <!--<dependencies>-->
-                    <!--<dependency>-->
-                        <!--<groupId>org.apache.maven.surefire</groupId>-->
-                        <!--<artifactId>surefire-junit47</artifactId>-->
-                        <!--<version>${maven.surefirePlugin.version}</version>-->
-                    <!--</dependency>-->
-                <!--</dependencies>-->
                 <configuration>
-                    <!--<parallel>methods</parallel>-->
-                    <!--<threadCount>10</threadCount>-->
-                    <suiteXmlFiles>
-                        <suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
-                    </suiteXmlFiles>
-                    <!--<properties>-->
-                        <!--<property>-->
-                            <!--<name>suitethreadpoolsize</name>-->
-                            <!--<value>2</value>-->
-                        <!--</property>-->
-                    <!--</properties>-->
+                    <!-- whatever you need... -->
+                    <!-- skip the default execution, we have separate for Ng and for JUnit -->
+                    <skip>true</skip>
                 </configuration>
-                <!-- we need a way to also run junit tests as part of surefire plugin-->
-                <!-- if we uncomment the code above, then junit runs but not testng tests -->
             </plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -377,29 +396,29 @@
                     <!--</execution>-->
                 <!--</executions>-->
             <!--</plugin>-->
-            <!--<plugin>-->
-                <!--<groupId>org.apache.maven.plugins</groupId>-->
-                <!--<artifactId>maven-failsafe-plugin</artifactId>-->
-                <!--<version>${maven.failsafePlugin.version}</version>-->
-                <!--<executions>-->
-                    <!--<execution>-->
-                        <!--<goals>-->
-                            <!--<goal>integration-test</goal>-->
-                            <!--<goal>verify</goal>-->
-                        <!--</goals>-->
-                        <!--&lt;!&ndash;<configuration>&ndash;&gt;-->
-                            <!--&lt;!&ndash;<argLine>${failsafeJacocoAgent}</argLine>&ndash;&gt;-->
-                        <!--&lt;!&ndash;</configuration>&ndash;&gt;-->
-                    <!--</execution>-->
-                <!--</executions>-->
-                <!--<configuration>-->
-                    <!--<includes>-->
-                        <!--&lt;!&ndash; add your particular runner class &ndash;&gt;-->
-                        <!--<include>**/*CucumberRunner*.java</include>-->
-                    <!--</includes>-->
-                    <!--<testFailureIgnore>true</testFailureIgnore>-->
-                <!--</configuration>-->
-            <!--</plugin>-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>${maven.failsafePlugin.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>integration-test</goal>
+                            <goal>verify</goal>
+                        </goals>
+                        <!--<configuration>-->
+                            <!--<argLine>${failsafeJacocoAgent}</argLine>-->
+                        <!--</configuration>-->
+                    </execution>
+                </executions>
+                <configuration>
+                    <includes>
+                        <!-- add your particular runner class -->
+                        <include>**/*CucumberRunner*.java</include>
+                    </includes>
+                    <testFailureIgnore>true</testFailureIgnore>
+                </configuration>
+            </plugin>
 
         </plugins>
         <resources>

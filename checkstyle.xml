@@ -186,7 +186,7 @@
         </module>
         <module name="MethodParamPad"/>
         <module name="NoWhitespaceBefore">
-            <property name="tokens" value="COMMA, SEMI, POST_INC, POST_DEC, DOT, ELLIPSIS, METHOD_REF"/>
+            <property name="tokens" value="COMMA, SEMI, POST_INC, POST_DEC, DOT"/>
             <property name="allowLineBreaks" value="true"/>
         </module>
         <module name="ParenPad"/>

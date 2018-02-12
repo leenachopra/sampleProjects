@@ -10,8 +10,8 @@ import selenium.testng.BrowserSetup;
 import selenium.testng.pageobjects.BasePage;
 import selenium.testng.pageobjects.SignInPage;
 
-public class SignInPageTest extends BrowserSetup{
-    private static final Logger LOGGER = LoggerFactory.getLogger(SignInPageTest.class);
+public class SignInPageTestNgTest extends BrowserSetup{
+    private static final Logger LOGGER = LoggerFactory.getLogger(SignInPageTestNgTest.class);
     private WebDriver driver;
     private SignInPage signInPage;
     private BasePage basePage;

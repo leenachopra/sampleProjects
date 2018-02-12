@@ -23,7 +23,7 @@ public class SafariTest {
     @Before
     public void prepare() {
 
-        testUrl = "http://www.google.com";
+        testUrl = "http://www.yahoo.com";
 
         driver = new SafariDriver();
         driver.manage().window().maximize();
@@ -40,11 +40,11 @@ public class SafariTest {
         //Click the selected button
         elements.get(0).click();
 
-        assertTrue("The page title should be chagned as expected",
+        assertTrue("The page title should be changed as expected",
             (new WebDriverWait(driver, 5))
                 .until(new ExpectedCondition<Boolean>() {
                     public Boolean apply(WebDriver d) {
-                        return d.getTitle().equals("Google");
+                        return d.getTitle().equals("Yahoo");
                     }
                 })
         );

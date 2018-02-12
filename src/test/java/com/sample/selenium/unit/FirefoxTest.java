@@ -25,7 +25,7 @@ public class FirefoxTest {
     @Before
     public void prepare() {
 
-        testUrl = "http://www.google.com";
+        testUrl = "http://www.yahoo.com";
 
         System.setProperty("webdriver.gecko.driver","webdriver/geckodriver.exe");
         //System.setProperty("webdriver.firefox.marionette","webdriver/geckodriver.exe");
@@ -47,7 +47,7 @@ public class FirefoxTest {
             (new WebDriverWait(driver, 3))
                 .until(new ExpectedCondition<Boolean>() {
                     public Boolean apply(WebDriver d) {
-                        return d.getTitle().equals("Google");
+                        return d.getTitle().equals("Yahoo");
                     }
                 })
         );

@@ -12,8 +12,8 @@ import selenium.testng.pageobjects.BasePage;
 import selenium.testng.pageobjects.SignInPage;
 import selenium.testng.pageobjects.CreateAccountPage;
 
-public class CreateAnAccountTest extends BrowserSetup{
-    private static final Logger LOGGER = LoggerFactory.getLogger(CreateAnAccountTest.class);
+public class CreateAnAccountTestNgTest extends BrowserSetup{
+    private static final Logger LOGGER = LoggerFactory.getLogger(CreateAnAccountTestNgTest.class);
 
     private WebDriver driver;
     private SignInPage signInPage;

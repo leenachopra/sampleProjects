@@ -1,25 +1,18 @@
 package restapis.unit;
 
-import java.io.*;
 import java.net.CookieHandler;
 import java.net.CookieManager;
-import java.util.ArrayList;
 import java.util.List;
-
-import com.sample.selenium.testNg.SignInPageTest;
-import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.message.BasicNameValuePair;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import restapis.RestapiClient;
 
-import static junit.framework.Assert.assertEquals;
+
 import static org.apache.http.protocol.HTTP.USER_AGENT;
+import static org.junit.Assert.assertEquals;
 
 /**
  * This example demonstrates an alternative way to call a URL
@@ -68,7 +61,7 @@ public class ApacheHttpRestClient2 {
         // make sure cookies is turn on
         CookieHandler.setDefault(new CookieManager());
         String page = restapiClient.getPageContent(url);
-        LOGGER.info("page::" + page);
+        //LOGGER.info("page::" + page);
 
 
         List<NameValuePair> postParams =

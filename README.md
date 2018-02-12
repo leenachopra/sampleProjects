@@ -12,7 +12,7 @@ as well as code around Page Object design pattern for SeleniumWebdriver TestNg t
 
 ## Execute automation tests (cucumber, testNg and JUnit test types) ##
 ```bash
-mvn clean test
+mvn clean install test -DbrowserType=chrome -DappURL=https://www.google.co.in/
 ```
 
 ## Execute jacoco

@@ -5,9 +5,9 @@
     <test name="sample test">
         <!--Ctrl key + /, used to comment and uncomment -->
         <classes>
-            <class name="com.sample.selenium.testNg.BasePageTest"/>
-            <!--<class name="com.sample.selenium.testNg.SignInPageTest"/>-->
-            <!--<class name="com.sample.selenium.testNg.CreateAnAccountTest"/>-->
+            <class name="com.sample.selenium.testNg.BasePageTestNgTest"/>
+            <!--<class name="com.sample.selenium.testNg.SignInPageTestNgTest"/>-->
+            <!--<class name="com.sample.selenium.testNg.CreateAnAccountTestNgTest"/>-->
         </classes>
     </test>
 </suite>
