@@ -1,7 +1,11 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Page Object test example">
+    <parameter name="browserName" value="Chrome"/>
+    <parameter name="browserVersion" value="64.0"/>
+    <parameter name="platformName" value="Windows"/>
+    <parameter name="platformVersion" value="10"/>
     <parameter name="appURL" value="https://www.google.co.in/"/>
-    <parameter name="browserType" value="chrome"/>
+
     <test name="sample test">
         <!--Ctrl key + /, used to comment and uncomment -->
         <classes>

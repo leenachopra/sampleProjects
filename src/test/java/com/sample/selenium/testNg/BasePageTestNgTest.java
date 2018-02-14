@@ -24,6 +24,11 @@ public class BasePageTestNgTest extends BrowserSetup{
         LOGGER.info("Home page test...");
         BasePage basePage = new BasePage(driver);
         Assert.assertTrue("Home page title doesn't match", basePage.verifyBasePageTitle());
+        try {
+            super.getScreenShotOfPage("verifyHomePage.png");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }
