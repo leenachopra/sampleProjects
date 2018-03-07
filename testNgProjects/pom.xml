@@ -26,8 +26,8 @@
 
         <maven.surefirePlugin.version>2.20.1</maven.surefirePlugin.version>
         <maven.failsafePlugin.version>2.19.1</maven.failsafePlugin.version>
-        <scm.connection>scm:git:git://github.com/leenachopra/sampleProjects.git</scm.connection>
-		<developer.connection>scm:git:git://github.com/leenachopra/sampleProjects.git</developer.connection>
+        <scm.connection>scm:git:git://github.com/leenachopra/sampleProjects/sampleTestNgProjects.git</scm.connection>
+		<developer.connection>scm:git:git://github.com/leenachopra/sampleProjects/sampleTestNgProjects.git</developer.connection>
 
         <checkstyle.config.location>${project.basedir}/checkstyle.xml</checkstyle.config.location>
 		<env>qa</env>
@@ -41,15 +41,7 @@
                 <enabled>true</enabled>
             </snapshots>
         </repository>
-        <!--<repository>-->
-            <!--<id>central</id>-->
-            <!--<name>Atlassian Public Repository</name>-->
-            <!--<layout>default</layout>-->
-            <!--<url>http://maven.atlassian.com/public</url>-->
-            <!--<snapshots>-->
-                <!--<enabled>false</enabled>-->
-            <!--</snapshots>-->
-        <!--</repository>-->
+       
         <!-- jira integration -->
         <repository>
             <id>atlassian-public</id>
