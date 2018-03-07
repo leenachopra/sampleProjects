@@ -1,0 +1,29 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Page Object test example">
+
+<!--
+	<listeners>
+        <listener class-name="com.vimalselvam.testng.listener.ExtentTestNgFormatter" />
+    </listeners>
+	
+	<parameter name="system.info" value="test.MySystemInfo" />
+    <parameter name="report.config" value="src/test/resources/extent-config.xml" />
+	-->
+	
+    <parameter name="browserName" value="Chrome"/>
+    <parameter name="browserVersion" value="64.0"/>
+    <parameter name="platformName" value="Windows"/>
+    <parameter name="platformVersion" value="10"/>
+    <parameter name="appURL" value="https://www.google.co.in/"/>
+
+    <test name="sample test">
+        <!--Ctrl key + /, used to comment and uncomment -->
+        <classes>
+            <class name="com.sample.selenium.testNg.BasePageTestNgTest"/>
+            <!--<class name="com.sample.selenium.testNg.SignInPageTestNgTest"/>-->
+            <!--<class name="com.sample.selenium.testNg.CreateAnAccountTestNgTest"/>-->
+        </classes>
+    </test>
+
+    
+</suite>

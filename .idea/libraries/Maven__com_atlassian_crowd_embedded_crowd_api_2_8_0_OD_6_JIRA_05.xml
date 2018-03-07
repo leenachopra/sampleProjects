@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.atlassian.crowd:embedded-crowd-api:2.8.0-OD-6-JIRA-05">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.m2/com/atlassian/crowd/embedded-crowd-api/2.8.0-OD-6-JIRA-05/embedded-crowd-api-2.8.0-OD-6-JIRA-05.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.m2/com/atlassian/crowd/embedded-crowd-api/2.8.0-OD-6-JIRA-05/embedded-crowd-api-2.8.0-OD-6-JIRA-05-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.m2/com/atlassian/crowd/embedded-crowd-api/2.8.0-OD-6-JIRA-05/embedded-crowd-api-2.8.0-OD-6-JIRA-05-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

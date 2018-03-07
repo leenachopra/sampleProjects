@@ -1,0 +1,26 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Page Object test example">
+    <parameter name="browserName" value="Chrome"/>
+    <parameter name="browserVersion" value="64.0"/>
+    <parameter name="platformName" value="Windows"/>
+    <parameter name="platformVersion" value="10"/>
+    <parameter name="appURL" value="https://www.google.co.in/"/>
+
+    <parameter name="system.info" value="test.MySystemInfo" />
+    <parameter name="report.config" value="src/test/resources/extent-config.xml" />
+
+
+    <test name="sample test">
+        <!--Ctrl key + /, used to comment and uncomment -->
+        <classes>
+            <class name="com.sample.selenium.testNg.BasePageTestNgTest"/>
+            <!--<class name="com.sample.selenium.testNg.SignInPageTestNgTest"/>-->
+            <!--<class name="com.sample.selenium.testNg.CreateAnAccountTestNgTest"/>-->
+        </classes>
+    </test>
+
+    <!-- The TestNG Extents report is a listener plugin which you can add it as a listener to your testng suite to generate a nice Extent report. -->
+    <listeners>
+        <listener class-name="com.vimalselvam.testng.listener.ExtentTestNgFormatter" />
+    </listeners>
+</suite>

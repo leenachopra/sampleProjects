@@ -13,7 +13,6 @@ as well as code around Page Object design pattern for SeleniumWebdriver TestNg t
 ## Execute automation tests (cucumber, testNg and JUnit test types) ##
 ```bash
 mvn clean install test -DbrowserName=Chrome -DbrowserVersion=64.0 -DplatformName=Windows -DplatformVersion=10 -DappURL=https://www.google.co.in/
-```
 
 ## Execute jacoco
 mvn clean package
