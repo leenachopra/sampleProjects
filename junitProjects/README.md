@@ -1,4 +1,4 @@
-# sampleProjects
+# sample Junit Projects
 The repository contains projects of selenium using ChromeWebDriver, IEDriver, FirefoxFriver
 
 

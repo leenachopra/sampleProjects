@@ -1,8 +1,5 @@
-# sampleProjects
-The repository contains projects for jira-cucumber code sample,
-
-
-
+# sample Cukes Projects
+The repository contains projects for jira-cucumber code sample.
 
 ## Prerequisites ##
 * Have [java] 1.8X version (http://www.oracle.com/technetwork/java/javase/downloads/index.html) installed
