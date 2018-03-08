@@ -1,4 +1,4 @@
-# sampleProjects
+# sample TestNg Projects
 The repository contains projects of selenium using ChromeWebDriver, IEDriver, FirefoxFriver using page object design.
 written in TestNg for google website.
 

@@ -65,6 +65,7 @@
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>6.14.2</version>
+			<scope>test</scope>
         </dependency>
 
         <!-- for assertThat -->

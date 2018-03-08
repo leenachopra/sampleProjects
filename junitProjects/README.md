@@ -10,8 +10,13 @@ The repository contains projects of selenium using ChromeWebDriver, IEDriver, Fi
 
 
 ## Execute automation tests (JUnit test types) ##
-```bash
-mvn clean install test
+mvn clean install test 
+
+## To see a report of the tests ##
+## The html report will be located in The default report should be located in ${basedir}/target/site/surefire-report.html ##
+mvn surefire-report:report 
+
+
 
 ## Execute jacoco
 mvn clean package

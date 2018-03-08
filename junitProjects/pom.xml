@@ -185,7 +185,12 @@
                             <includes>
                                 <include>**/unit*/*.java</include>
                             </includes>
+							
+							<parallel>methods</parallel>
+							<threadCount>2</threadCount>
                         </configuration>
+						
+
                     </execution>
 				</executions>
             </plugin>
